@@ -1,0 +1,10 @@
+<h1>Fabricantes</h1>
+<ul>
+    <% if @manufacturers.blank? %>
+      Nenhum fabricante cadastrado
+    <% end %>
+    <% @manufacturers.each do |m| %>
+      <%= link_to m.name, manufacturer_path(id: m.id) %>
+    <% end %>
+    <%= link_to 'Voltar', root_path %>
+</ul>
