@@ -7,4 +7,16 @@ class ManufacturersController < ApplicationController
     id = params[:id]
     @manufacturer = Manufacturer.find(id)
   end
+
+  def new
+    @manufacturer = Manufacturer.new
+  end
+
+  def create
+    #@manufacturer = Manufacturer.new(params.require(:manufacturer).permit(:name))
+    @manufacturer = Manufacturer.new
+    @manufacturer.name = params[:manufacturer][:name]
+    @manufacturer.save
+    redirect_to @manufacturer
+  end
 end
