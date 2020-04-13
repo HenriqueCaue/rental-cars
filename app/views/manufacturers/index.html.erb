@@ -1,6 +1,6 @@
 <h1>Fabricantes</h1>
 <ul>
-    <% if @manufacturers.blank? %>
+    <% if @manufacturers.empty? %>
       Nenhum fabricante cadastrado
     <% end %>
     <% @manufacturers.each do |m| %>
