@@ -6,5 +6,6 @@
     <% @subsidiarys.each do |m| %>
       <h3><%= link_to m.name, subsidiary_path(id: m.id) %></h3>
     <% end %>
+    <%= link_to 'Registrar nova filial', new_subsidiary_path %>
     <%= link_to 'Voltar', root_path %>
 </ul>

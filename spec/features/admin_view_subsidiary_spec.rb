@@ -47,6 +47,6 @@ feature 'Admin view subsidiary' do
     click_on subsidiary.name
     click_on 'Voltar'
 
-    expect(current_path).to eq subsidiarys_path
+    expect(current_path).to eq subsidiaries_path
   end
 end
