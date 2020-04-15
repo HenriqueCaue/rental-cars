@@ -1,6 +1,6 @@
 class SubsidiariesController < ApplicationController
   def index
-    @subsidiarys = Subsidiary.all
+    @subsidiaries = Subsidiary.all
   end
 
   def show

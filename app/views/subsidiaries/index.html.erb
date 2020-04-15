@@ -1,9 +1,9 @@
 <h1>Fabricantes</h1>
 <ul>
-    <% if @subsidiarys.empty? %>
+    <% if @subsidiaries.empty? %>
       <h1>Nenhum fabricante cadastrado</h1>
     <% end %>
-    <% @subsidiarys.each do |m| %>
+    <% @subsidiaries.each do |m| %>
       <h3><%= link_to m.name, subsidiary_path(id: m.id) %></h3>
     <% end %>
     <%= link_to 'Registrar nova filial', new_subsidiary_path %>
