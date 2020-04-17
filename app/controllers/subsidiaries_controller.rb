@@ -13,11 +13,17 @@ class SubsidiariesController < ApplicationController
   end
 
   def create
-    @subsidiary = Subsidiary.new
-    @subsidiary.name = params[:subsidiary][:name]
-    @subsidiary.cnpj = params[:subsidiary][:cnpj]
-    @subsidiary.address = params[:subsidiary][:address]
-    @subsidiary.save
-    redirect_to @subsidiary
+    @subsidiary = Subsidiary.new(subsidiary_params)
+    if @subsidiary.save
+      redirect_to @subsidiary
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def subsidiary_params
+    params.require(:subsidiary).permit(:name, :cnpj, :address)
   end
 end

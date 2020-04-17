@@ -1,3 +1,9 @@
+<h1>Registar nova categoria</h1>
+
+<% @subsidiary.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
 <%= form_for @subsidiary do |f| %>
   <%= f.label :name, 'Nome' %>
   <%= f.text_field :name %>
