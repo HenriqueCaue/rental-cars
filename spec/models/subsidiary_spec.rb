@@ -49,7 +49,7 @@ describe Subsidiary, type: :model do
 
     it 'address must be uniq' do
       Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua joa de Barro')
-      subsidiary = Subsidiary.new(address: 'Rua Joa de Barro')
+      subsidiary = Subsidiary.new(address: 'Rua joa de Barro')
 
       subsidiary.valid?
 
