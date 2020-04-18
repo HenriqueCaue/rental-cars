@@ -1,3 +1,9 @@
+<h1>Registra nova categoria<h1>
+
+<% @carcategory.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
 <%= form_for @carcategory do |f| %>
   <%= f.label :name, 'Nome' %>
   <%= f.text_field :name %>
