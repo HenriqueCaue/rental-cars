@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Subsidiary, type: :model do
-  context 'validation' do
-    it 'name cannot be blank' do
-      subsidiary = Subsidiary.new
+  context '#name' do
+    it 'cannot be blank' do
+      subsidiary = Subsidiary.new(name: '')
 
       subsidiary.valid?
 
@@ -11,8 +11,19 @@ describe Subsidiary, type: :model do
                                                     'ficar em branco')
     end
 
-    it 'cnpj cannot be blank' do
-      subsidiary = Subsidiary.new
+    it 'must be uniq' do
+      Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua joa de Barro')
+      subsidiary = Subsidiary.new(name: 'São Paulo')
+
+      subsidiary.valid?
+
+      expect(subsidiary.errors[:name]).to include('Nome deve ser único')
+    end
+  end
+
+  context '#cnpj' do
+    it 'cannot be blank' do
+      subsidiary = Subsidiary.new(cnpj: '')
 
       subsidiary.valid?
 
@@ -20,7 +31,26 @@ describe Subsidiary, type: :model do
                                                     'ficar em branco')
     end
 
-    it 'address cannot be blank' do
+    it 'must be uniq' do
+      Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua joa de Barro')
+      subsidiary = Subsidiary.new(cnpj: '22.880.353/0001-66')
+
+      subsidiary.valid?
+
+      expect(subsidiary.errors[:cnpj]).to include('CNPJ deve ser único')
+    end
+
+    it 'must be valid format' do
+      subsidiary = Subsidiary.new(cnpj: '23.534.432/0010-00')
+
+      subsidiary.valid?
+
+      expect(subsidiary.errors[:cnpj]).to include('não é válido')
+    end
+  end
+
+  context '#address' do
+    it 'cannot be blank' do
       subsidiary = Subsidiary.new
 
       subsidiary.valid?
@@ -29,26 +59,8 @@ describe Subsidiary, type: :model do
                                                     'ficar em branco')
     end
 
-    it 'name must be uniq' do
-      Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua joa de Barro')
-      subsidiary = Subsidiary.new(name: 'São Paulo')
-
-      subsidiary.valid?
-
-      expect(subsidiary.errors[:name]).to include('Nome deve ser único')
-    end
-
-    it 'cnpj must be uniq' do
-      Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua joa de Barro')
-      subsidiary = Subsidiary.new(cnpj: 'XX.XXX.XXX/XXXX-XX')
-
-      subsidiary.valid?
-
-      expect(subsidiary.errors[:cnpj]).to include('CNPJ deve ser único')
-    end
-
-    it 'address must be uniq' do
-      Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua joa de Barro')
+    it 'must be uniq' do
+      Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua joa de Barro')
       subsidiary = Subsidiary.new(address: 'Rua joa de Barro')
 
       subsidiary.valid?

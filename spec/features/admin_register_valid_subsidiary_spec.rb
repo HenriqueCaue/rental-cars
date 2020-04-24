@@ -2,14 +2,14 @@ require 'rails_helper'
 
 feature 'Admin register valid subsidiary' do
   scenario 'and all must be unique' do
-    Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua Joa de Barro')
+    Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
     
     visit root_path
     click_on 'Filiais'
     click_on 'Registrar nova filial'
 
     fill_in 'Nome', with: 'São Paulo'
-    fill_in 'CNPJ', with: 'XX.XXX.XXX/XXXX-XX'
+    fill_in 'CNPJ', with: '22.880.353/0001-66'
     fill_in 'Endereço', with: 'Rua Joa de Barro'
 
     click_on 'Enviar'

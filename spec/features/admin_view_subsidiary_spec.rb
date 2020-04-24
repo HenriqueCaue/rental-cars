@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Admin view subsidiary' do
   scenario 'successfully' do
-    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua Joa de Barro')
+    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
 
     visit root_path
     click_on 'Filiais'
@@ -11,7 +11,7 @@ feature 'Admin view subsidiary' do
   end
 
   scenario 'and view details' do
-    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua Joa de Barro')
+    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
 
     visit root_path
     click_on 'Filiais'
@@ -30,7 +30,7 @@ feature 'Admin view subsidiary' do
   end
 
   scenario 'and return to home page' do
-    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua Joa de Barro')
+    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
 
     visit root_path
     click_on 'Filiais'
@@ -40,7 +40,7 @@ feature 'Admin view subsidiary' do
   end
 
   scenario 'and return to subsidiary page' do
-    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: 'XX.XXX.XXX/XXXX-XX', address: 'Rua Joa de Barro')
+    subsidiary = Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
 
     visit root_path
     click_on 'Filiais'
