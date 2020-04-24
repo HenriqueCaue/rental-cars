@@ -3,4 +3,8 @@
 <p><%= @carcategories.car_insurance %></p>
 <p><%= @carcategories.third_party_insurance %></p>
 
+<h3>Modelos de carros</h3>
+<% @carcategories.car_models.each do |car_model| %>
+  <%= link_to car_model.name, car_model %>
+<% end %>
 <%= link_to 'Voltar', car_categories_path %>
