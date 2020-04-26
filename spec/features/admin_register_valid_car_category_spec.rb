@@ -34,4 +34,21 @@ feature 'admin register valid car category' do
     expect(page).to have_content('Seguro do carro não pode ficar em branco')
     expect(page).to have_content('Seguro contra terceiros não pode ficar em branco')
   end
+
+  scenario 'values must be greater than 0' do
+    visit root_path
+    click_on 'Categorias de carros'
+    click_on 'Registrar nova categoria'
+
+    fill_in 'Nome', with: 'Básico'
+    fill_in 'Taxa diária', with: '-100'
+    fill_in 'Seguro do carro', with: '-1000'
+    fill_in 'Seguro contra terceiros', with: '-2000'
+
+    click_on 'Enviar'
+    
+    expect(page).to have_content('Taxa diária deve ser maior que 0')
+    expect(page).to have_content('Seguro do carro deve ser maior que 0')
+    expect(page).to have_content('Seguro contra terceiros deve ser maior que 0')
+  end
 end
