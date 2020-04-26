@@ -24,13 +24,13 @@ feature 'User register customer' do
     click_on 'Registrar novo cliente'
 
     fill_in 'Nome', with: 'João'
-    fill_in 'CPF', with: 'XXX.XXX.XXX-XX'
+    fill_in 'CPF', with: '820.286.340-65'
     fill_in 'Endereço de email', with: 'customer@gmail.com'
     click_on 'Enviar'
 
     expect(current_path).to eq customer_path(Customer.last.id)
     expect(page).to have_css('h1', text: 'João')
-    expect(page).to have_css('p', text: 'XXX.XXX.XXX-XX')
+    expect(page).to have_css('p', text: '820.286.340-65')
     expect(page).to have_css('p', text: 'customer@gmail.com')
 
     expect(page).to have_link('Voltar')

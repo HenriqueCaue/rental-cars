@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'user view customer' do
   scenario 'succesfully' do
-    Customer.create!(name: 'João', document: 'XXX.XXX.XXX-XX', 
+    Customer.create!(name: 'João', document: '820.286.340-65', 
     email: 'customer@email.com')
 
     visit root_path
@@ -12,7 +12,7 @@ feature 'user view customer' do
   end
 
   scenario 'and view details' do
-    customer = Customer.create!(name: 'João', document: 'XXX.XXX.XXX-XX', 
+    customer = Customer.create!(name: 'João', document: '820.286.340-65', 
       email: 'customer@email.com')
 
     visit root_path
@@ -41,7 +41,7 @@ feature 'user view customer' do
   end
 
   scenario 'and find return button' do
-    customer = Customer.create!(name: 'João', document: 'XXX.XXX.XXX-XX', 
+    customer = Customer.create!(name: 'João', document: '820.286.340-65', 
     email: 'customer@email.com')
       
     visit root_path
@@ -63,7 +63,7 @@ feature 'user view customer' do
   end
 
   scenario 'and return to customers page' do
-    customer = Customer.create!(name: 'João', document: 'XXX.XXX.XXX-XX', 
+    customer = Customer.create!(name: 'João', document: '820.286.340-65', 
     email: 'customer@email.com')
     
     visit root_path
