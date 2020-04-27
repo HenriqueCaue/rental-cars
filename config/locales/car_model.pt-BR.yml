@@ -3,6 +3,7 @@ pt-BR:
   activerecord:
     models:
       car_model: Modelo de Carro
+      car_category: Categoria de Carro
     attributes:
       car_model:
         name: Nome
@@ -11,3 +12,8 @@ pt-BR:
         fuel_type: Combustível
         manufacturer: Fabricante
         car_category: Categoria
+      car_category:
+        name: Nome
+        daily_rate: Taxa Diária
+        car_insurance: Seguro do Carro
+        third_party_insurance: Seguro Contra Terceiros

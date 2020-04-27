@@ -7,4 +7,6 @@
 <% @carcategories.car_models.each do |car_model| %>
   <%= link_to car_model.name, car_model %>
 <% end %>
+
+<%= link_to 'Editar', edit_car_category_path %>
 <%= link_to 'Voltar', car_categories_path %>

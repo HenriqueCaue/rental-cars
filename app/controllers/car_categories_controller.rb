@@ -21,6 +21,18 @@ class CarCategoriesController < ApplicationController
     end
   end
 
+  def edit
+    @carcategory = CarCategory.find(params[:id])
+  end
+
+  def update
+    @carcategory = CarCategory.find(params[:id])
+    if @carcategory.update(carcategory_params)
+      redirect_to @carcategory
+    else
+      render :new
+    end
+  end
   private
 
   def carcategory_params

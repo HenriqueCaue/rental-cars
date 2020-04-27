@@ -1,0 +1,17 @@
+<h1>Editar categoria<h1>
+
+<% @carcategory.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
+<%= form_for @carcategory do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :daily_rate %>
+  <%= f.text_field :daily_rate %>
+  <%= f.label :car_insurance %>
+  <%= f.text_field :car_insurance %>
+  <%= f.label :third_party_insurance %>
+  <%= f.text_field :third_party_insurance %>
+  <%= f.submit 'Enviar' %>
+<% end %>
