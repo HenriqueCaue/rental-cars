@@ -1,5 +1,13 @@
 <h1>Novo modelo de carro</h1>
 
+<% if @car_model.errors.any? %>
+  <ul>
+    <% @car_model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @car_model, local:true do |cm|%>
   <%= cm.label :name, 'Nome' %>
   <%= cm.text_field :name %>
