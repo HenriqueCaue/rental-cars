@@ -1,0 +1,13 @@
+<dl>
+  <dt>Cliente:</dt>
+  <dd><%= @rentals.customer.name %></dd>
+  <dt>Categoria:</dt>
+  <dd><%= @rentals.car_category.name %></dd>
+  <dt>Data de início:</dt>
+  <dd><%= l @rentals.start_date %></dd>
+  <dt>Data de término:</dt>
+  <dd><%= l @rentals.end_date %></dd>
+</dl>
+
+<%= link_to 'Voltar', rentals_path %>
+

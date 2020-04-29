@@ -2,6 +2,15 @@
 
 <%= link_to 'Registrar nova locação', new_rental_path %>
 
+<% if @rentals.empty? %>
+  Nenhuma locação cadastrada
+<% end %>
+
+<% @rentals.each do |ren| %>
+  <h3><%= link_to ren.customer.name, rental_path(id: ren.id) %></h3>
+  <!--<p><%= link_to 'Ver detalhes', ren, id: "details-#{ren.id}" %></p>-->
+<% end %>
+
 <% @rentals.each do |rental| %>
   <dl>
     <dt>Data de início:</dt>
@@ -14,4 +23,6 @@
     <dd><%= rental.car_category.name %></dd>
   </dl>
 <% end %>
+
+<%= link_to 'Voltar', root_path %>
 
