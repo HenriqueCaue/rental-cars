@@ -75,7 +75,7 @@ feature 'Admin view rentals' do
     expect(current_path).to eq root_path
   end
 
-  scenario 'and return to subsidiary page' do
+  scenario 'and return to rental page' do
     customer = Customer.create!(name: 'Fulano', document: '185.972.440-03', 
     email: 'customer@gmail.com')
 
@@ -95,5 +95,17 @@ feature 'Admin view rentals' do
     click_on 'Voltar'
 
     expect(current_path).to eq rentals_path
+  end
+
+  scenario 'cannot view unless logged in' do
+    visit root_path
+
+    expect(page).not_to have_link('Locações')
+  end
+
+  xscenario 'cannot view unless logged in' do
+    visit root_path
+
+    expect(page).to eq(new_user_session_path)
   end
 end
