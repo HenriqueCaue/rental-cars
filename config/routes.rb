@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'home#index' #> RAIZ ou seja ROOT
   # get '/', to: 'home#index'
   #resources :manufacturers, only: [:index, :show, :new, :create, :edit, :update, :destroy]
