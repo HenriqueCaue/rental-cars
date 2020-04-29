@@ -29,7 +29,10 @@ feature 'Admin view car models' do
   end
 
   scenario 'no car models' do
-    
+    visit root_path
+    click_on 'Modelos de Carros'
+
+    expect(page).to have_css('h1', text: 'Nenhum modelo cadastrado')
   end
 
   scenario 'and view details' do

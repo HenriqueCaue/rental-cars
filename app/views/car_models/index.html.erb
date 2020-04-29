@@ -2,6 +2,10 @@
 
 <%= link_to 'Registrar modelo de carro', new_car_model_path %>
 
+<% if @car_models.empty? %>
+      <h1>Nenhum modelo cadastrado</h1>
+<% end %>
+
 <table>
   <thead>
     <tr>
