@@ -1,0 +1,15 @@
+<h1>Registrar novo carro</h1>
+
+<%= form_with model: @car, local: true do |c| %>
+  <%= c.label :car_model_id, 'Modelo do carro' %>
+  <%= c.collection_select :car_model_id, @car_model, :id, :name%>
+  <%= c.label :license_plate, 'Placa' %>
+  <%= c.text_field :license_plate %>
+  <%= c.label :color, 'Cor' %>
+  <%= c.text_field :color %>
+  <%= c.label :mileage, 'Quilometragem' %>
+  <%= c.number_field :mileage %>
+  <%= c.label :subsidiary_id, 'Filial' %>
+  <%= c.collection_select :subsidiary_id, @subsidiary, :id, :name%>
+  <%= c.submit 'Enviar' %>
+<% end %>
