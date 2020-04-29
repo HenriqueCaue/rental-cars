@@ -33,4 +33,10 @@ feature 'Admin register car' do
     expect(page).to have_content('Quilometragem: 0 km')
     expect(page).to have_content('Filial: São Paulo')
   end
+
+  scenario 'and must be authentication' do
+    visit new_car_path
+
+    expect(current_path).to eq(new_user_session_path)
+  end
 end

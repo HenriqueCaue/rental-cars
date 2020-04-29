@@ -1,4 +1,6 @@
 class CarsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @cars = Car.all
   end
@@ -15,7 +17,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.create(car_params)
-    redirect_to cars_path
+    redirect_to @car
   end
 
   private

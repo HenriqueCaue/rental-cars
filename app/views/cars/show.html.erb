@@ -1,0 +1,14 @@
+<dl>
+  <dt>Modelo do carro:</dt>
+  <dd><%= @car.car_model.name %></dd>
+  <dt>Placa:</dt>
+  <dd><%= @car.license_plate %></dd>
+  <dt>Cor:</dt>
+  <dd><%= @car.color %></dd>
+  <dt>Quilometragem:</dt>
+  <dd><%= "#{@car.mileage} km" %></dd>
+  <dt>Filial:</dt>
+  <dd><%= @car.subsidiary.name%></dd>
+</dl>
+
+<%= link_to 'Voltar', cars_path %>

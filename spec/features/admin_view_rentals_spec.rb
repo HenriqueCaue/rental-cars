@@ -103,9 +103,9 @@ feature 'Admin view rentals' do
     expect(page).not_to have_link('Locações')
   end
 
-  xscenario 'cannot view unless logged in' do
-    visit root_path
+  scenario 'cannot view unless logged in' do
+    visit rentals_path
 
-    expect(page).to eq(new_user_session_path)
+    expect(current_path).to eq(new_user_session_path)
   end
 end

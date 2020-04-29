@@ -2,17 +2,12 @@
 
 <%= link_to 'Registrar novo carro', new_car_path %>
 
-<% @cars.each do |car| %>
-  <dl>
-    <dt>Modelo do carro:</dt>
-    <dd><%= car.car_model.name %></dd>
-    <dt>Placa:</dt>
-    <dd><%= car.license_plate %></dd>
-    <dt>Cor:</dt>
-    <dd><%= car.color %></dd>
-    <dt>Quilometragem:</dt>
-    <dd><%= "#{car.mileage} km" %></dd>
-    <dt>Filial:</dt>
-    <dd><%= car.subsidiary.name%></dd>
-  </dl>
+<% if @cars.empty? %>
+  Nenhum carro cadastrado
 <% end %>
+
+<% @cars.each do |c| %>
+  <h3><%= link_to c.car_model.name, car_path(id: c.id) %></h3>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>
