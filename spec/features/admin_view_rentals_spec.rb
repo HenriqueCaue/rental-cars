@@ -11,6 +11,9 @@ feature 'Admin view rentals' do
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
 
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+
+    login_as user, scope: :user
     visit root_path
     click_on 'Locações'
 
@@ -27,6 +30,10 @@ feature 'Admin view rentals' do
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
   
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Locações'
     click_on 'Fulano'
@@ -38,6 +45,9 @@ feature 'Admin view rentals' do
   end
 
   scenario 'and no rentals are created' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+
+    login_as user, scope: :user
     visit root_path
     click_on 'Locações'
 
@@ -53,6 +63,10 @@ feature 'Admin view rentals' do
 
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
+
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+
+    login_as user, scope: :user
     
     visit root_path
     click_on 'Locações'
@@ -70,6 +84,10 @@ feature 'Admin view rentals' do
 
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
+
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+
+    login_as user, scope: :user
     
     visit root_path
     click_on 'Locações'

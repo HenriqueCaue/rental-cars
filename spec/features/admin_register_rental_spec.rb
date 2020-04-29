@@ -8,6 +8,9 @@ feature 'Admin register rental' do
     car_category = CarCategory.create!(name: 'A', daily_rate: 100, car_insurance: 100, 
                                         third_party_insurance: 100)
 
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+
+    login_as user, scope: :user
     visit root_path
     click_on 'Locações'
     click_on 'Registrar nova locação'
@@ -21,5 +24,15 @@ feature 'Admin register rental' do
     expect(page).to have_content('Data de término: 29/04/2030')
     expect(page).to have_content("Cliente: #{customer.name}")
     expect(page).to have_content("Categoria: #{car_category.name}")
+  end
+
+  xscenario 'and must fill in all fields' do
+    
+  end
+
+  scenario 'and must be authentication' do
+    visit new_rental_path
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end
