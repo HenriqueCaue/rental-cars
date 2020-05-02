@@ -5,6 +5,9 @@ feature 'Admin edit subsidiary' do
     Subsidiary.create!(name: 'São Paulo', 
         cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
 
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Filiais'
     click_on 'São Paulo'
@@ -23,6 +26,9 @@ feature 'Admin edit subsidiary' do
   scenario 'and nothing can be blank' do
     Subsidiary.create!(name: 'São Paulo', 
         cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
+
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Filiais'
@@ -46,7 +52,9 @@ feature 'Admin edit subsidiary' do
     Subsidiary.create!(name: 'Salvador', 
         cnpj: '24.715.285/0001-05', address: 'Rua Estrada Avenida')
 
-    
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Filiais'
     click_on 'São Paulo'
@@ -60,5 +68,11 @@ feature 'Admin edit subsidiary' do
     expect(page).to have_content('Nome já está em uso')
     expect(page).to have_content('CNPJ já está em uso')
     expect(page).to have_content('Endereço já está em uso')
+  end
+
+  scenario 'cannot view unless logged in' do
+    visit edit_subsidiary_path(1)
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end

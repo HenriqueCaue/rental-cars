@@ -4,6 +4,9 @@ feature 'Admin register valid subsidiary' do
   scenario 'and all must be unique' do
     Subsidiary.create!(name: 'São Paulo', cnpj: '22.880.353/0001-66', address: 'Rua Joa de Barro')
     
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Filiais'
     click_on 'Registrar nova filial'
@@ -20,6 +23,9 @@ feature 'Admin register valid subsidiary' do
   end
 
   scenario 'and nothing can be blank' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Filiais'
     click_on 'Registrar nova filial'
