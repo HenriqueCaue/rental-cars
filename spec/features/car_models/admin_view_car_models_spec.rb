@@ -14,6 +14,9 @@ feature 'Admin view car models' do
     CarModel.create!(name: 'Ka', year: 2021, manufacturer: ford, 
                       motorization: '1.0', fuel_type: 'Flex', car_category: category)
 
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     # Act
     visit root_path
     click_on 'Modelos de Carros'
@@ -29,6 +32,9 @@ feature 'Admin view car models' do
   end
 
   scenario 'no car models' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Modelos de Carros'
 
@@ -50,6 +56,9 @@ feature 'Admin view car models' do
     CarModel.create!(name: 'Toro', year: 2020, manufacturer: fiat,
                       motorization: '2.0 Turbo', fuel_type: 'Diesel', car_category: cat_e)
   
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     # Act
     visit root_path
     click_on 'Modelos de Carros'
@@ -74,5 +83,24 @@ feature 'Admin view car models' do
     expect(page).not_to have_content 'Categoria: E'
     expect(page).not_to have_content 'Combustível: Diesel'
     expect(page).not_to have_content 'Diária: R$ 250,00'
+  end
+
+  scenario 'cannot view unless logged in' do
+    visit car_models_path
+
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+  scenario 'cannot view unless logged in' do
+    fiat = Manufacturer.create!(name: 'Fiat')
+    cat_a = CarCategory.create!(name: 'A', daily_rate: 50, car_insurance: 40, 
+                                third_part_insurance: 30)
+
+    CarModel.create!(name: 'Uno', year: 2020, manufacturer: fiat,
+                      motorization: '1.0', fuel_type: 'Flex', car_category: cat_a)
+
+    visit car_model_path(1)
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end
