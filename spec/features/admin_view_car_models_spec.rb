@@ -6,7 +6,7 @@ feature 'Admin view car models' do
     fiat = Manufacturer.create!(name: 'Fiat')
     ford = Manufacturer.create!(name: 'Ford')
     category = CarCategory.create!(name: 'A', daily_rate: 50, car_insurance: 40, 
-                                third_party_insurance: 30)
+                                third_part_insurance: 30)
 
     CarModel.create!(name: 'Uno', year: 2020, manufacturer: fiat, 
                       motorization: '1.0', fuel_type: 'Flex', car_category: category)
@@ -39,10 +39,10 @@ feature 'Admin view car models' do
     # Arrange 
     fiat = Manufacturer.create!(name: 'Fiat')
     cat_a = CarCategory.create!(name: 'A', daily_rate: 50, car_insurance: 40, 
-                                third_party_insurance: 30)
+                                third_part_insurance: 30)
 
     cat_e = CarCategory.create!(name: 'E', daily_rate: 250, car_insurance: 100, 
-                                third_party_insurance: 100)
+                                third_part_insurance: 100)
 
     cm = CarModel.create!(name: 'Uno', year: 2020, manufacturer: fiat,
                       motorization: '1.0', fuel_type: 'Flex', car_category: cat_a)
@@ -68,11 +68,11 @@ feature 'Admin view car models' do
     expect(page).to have_content 'Motor: 1.0'
     expect(page).to have_content 'Combustível: Flex'
     expect(page).to have_content 'Categoria: A'
-    expect(page).to have_content 'Diária: 50'
+    expect(page).to have_content 'Diária: R$ 50,00'
 
     expect(page).not_to have_content 'Toro'
     expect(page).not_to have_content 'Categoria: E'
     expect(page).not_to have_content 'Combustível: Diesel'
-    expect(page).not_to have_content 'Diária: 250'
+    expect(page).not_to have_content 'Diária: R$ 250,00'
   end
 end

@@ -12,5 +12,5 @@
   <dt>Categoria: </dt>
   <dd><%= @car_model.car_category.name %></dd>
   <dt>Diária: </dt>
-  <dd><%= @car_model.car_category.daily_rate %></dd>
+  <dd><%= number_to_currency(@car_model.car_category.daily_rate) %></dd>
 </dl>

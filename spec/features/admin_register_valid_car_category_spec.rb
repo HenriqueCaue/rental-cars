@@ -2,13 +2,13 @@ require 'rails_helper'
 
 feature 'admin register valid car category' do
   scenario 'name must be unique' do
-    CarCategory.create!(name: 'Básico', daily_rate: '100', car_insurance: '1000', third_party_insurance: '2000')
+    CarCategory.create!(name: 'A', daily_rate: '100', car_insurance: '1000', third_part_insurance: '2000')
     
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Registrar nova categoria'
 
-    fill_in 'Nome', with: 'Básico'
+    fill_in 'Nome', with: 'A'
     fill_in 'Taxa diária', with: '100'
     fill_in 'Seguro do carro', with: '1000'
     fill_in 'Seguro contra terceiros', with: '2000'
@@ -40,7 +40,7 @@ feature 'admin register valid car category' do
     click_on 'Categorias de carros'
     click_on 'Registrar nova categoria'
 
-    fill_in 'Nome', with: 'Básico'
+    fill_in 'Nome', with: 'A'
     fill_in 'Taxa diária', with: '-100'
     fill_in 'Seguro do carro', with: '-1000'
     fill_in 'Seguro contra terceiros', with: '-2000'

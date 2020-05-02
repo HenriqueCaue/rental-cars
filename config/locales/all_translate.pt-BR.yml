@@ -1,0 +1,46 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      car_model: Modelo de Carro
+      car_category: Categoria de Carro
+      car: Carro
+      customer: Cliente
+      manufacturer: Fabricante
+      rental: Locação
+      subsidiary: Filial
+    attributes:
+      car_model:
+        name: Nome
+        year: Ano
+        motorization: Motor
+        fuel_type: Combustível
+        manufacturer: Fabricante
+        car_category: Categoria
+      car_category:
+        name: Nome
+        daily_rate: Taxa Diária
+        car_insurance: Seguro do Carro
+        third_part_insurance: Seguro Contra Terceiros
+      car:
+        license_plate: Placa
+        color: Cor
+        car_model: Modelo de Carro
+        mileage: Quilometragem
+        subsidiary: Filial
+      customer:
+        name: Nome
+        document: CPF
+        email: Email
+      manufacturer:
+        name: Nome
+      rental:
+        start_date: Data de início
+        end_date: Data de término
+        customer: Cliente
+        car_category: Categoria
+      subsidiary:
+        name: Nome
+        cnpj: CNPJ
+        address: Endereço
+

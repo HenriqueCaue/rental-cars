@@ -4,7 +4,7 @@ feature 'Admin register car models' do
   scenario 'successfully' do
     manufacturer = Manufacturer.create!(name: 'Fiat')
     car_category = CarCategory.create!(name: 'A', daily_rate: 100,
-                                        car_insurance: 100, third_party_insurance: 100)
+                                        car_insurance: 100, third_part_insurance: 100)
                                     
     visit root_path
     click_on 'Modelos de Carros'

@@ -36,7 +36,7 @@ class CarCategoriesController < ApplicationController
   private
 
   def carcategory_params
-    params.require(:car_category).permit(:name, :daily_rate, :car_insurance, :third_party_insurance)
+    params.require(:car_category).permit(:name, :daily_rate, :car_insurance, :third_part_insurance)
   end
 end
 

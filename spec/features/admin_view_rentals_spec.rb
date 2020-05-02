@@ -6,7 +6,7 @@ feature 'Admin view rentals' do
     email: 'customer@gmail.com')
 
     car_category = CarCategory.create!(name: 'A', daily_rate: 100, car_insurance: 100, 
-                                      third_party_insurance: 100)
+                                      third_part_insurance: 100)
 
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
@@ -25,7 +25,7 @@ feature 'Admin view rentals' do
     email: 'customer@gmail.com')
 
     car_category = CarCategory.create!(name: 'A', daily_rate: 100, car_insurance: 100, 
-                                      third_party_insurance: 100)
+                                      third_part_insurance: 100)
 
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
@@ -59,7 +59,7 @@ feature 'Admin view rentals' do
     email: 'customer@gmail.com')
 
     car_category = CarCategory.create!(name: 'A', daily_rate: 100, car_insurance: 100, 
-                                      third_party_insurance: 100)
+                                      third_part_insurance: 100)
 
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
@@ -80,7 +80,7 @@ feature 'Admin view rentals' do
     email: 'customer@gmail.com')
 
     car_category = CarCategory.create!(name: 'A', daily_rate: 100, car_insurance: 100, 
-                                      third_party_insurance: 100)
+                                      third_part_insurance: 100)
 
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)

@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin edit car category' do
   scenario 'successfully' do
     CarCategory.create!(name: 'A', daily_rate: '4.50', 
-      car_insurance: '1000', third_party_insurance: '950.50')
+      car_insurance: '1000', third_part_insurance: '950.50')
 
     visit root_path
     click_on 'Categorias de carros'
@@ -17,14 +17,14 @@ feature 'Admin edit car category' do
     click_on 'Enviar'
 
     expect(page).to have_css('h1', text: 'Categoria B')
-    expect(page).to have_css('p', text: '10')
-    expect(page).to have_css('p', text: '2000')
-    expect(page).to have_css('p', text: '1500')
+    expect(page).to have_css('p', text: 'R$ 10,00')
+    expect(page).to have_css('p', text: 'R$ 2.000,00')
+    expect(page).to have_css('p', text: 'R$ 1.500,00')
   end
 
   scenario 'and nothing can be blank' do
     CarCategory.create!(name: 'A', daily_rate: '4.50', 
-      car_insurance: '1000', third_party_insurance: '950.50')
+      car_insurance: '1000', third_part_insurance: '950.50')
 
     visit root_path
     click_on 'Categorias de carros'
@@ -45,10 +45,10 @@ feature 'Admin edit car category' do
 
   scenario 'and all must be unique' do
     CarCategory.create!(name: 'A', daily_rate: '4.50', 
-      car_insurance: '1000', third_party_insurance: '950.50')
+      car_insurance: '1000', third_part_insurance: '950.50')
 
     CarCategory.create!(name: 'B', daily_rate: '4.50', 
-      car_insurance: '1000', third_party_insurance: '950.50')
+      car_insurance: '1000', third_part_insurance: '950.50')
 
     
     visit root_path

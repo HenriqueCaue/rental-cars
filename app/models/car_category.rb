@@ -10,6 +10,6 @@ class CarCategory < ApplicationRecord
   validates :car_insurance, presence: {message: 'Seguro do carro não pode ficar em branco'}
   validates :car_insurance, numericality: { greater_than: 0, message: 'Seguro do carro deve ser maior que 0'}
 
-  validates :third_party_insurance, presence: {message: 'Seguro contra terceiros não pode ficar em branco'}
-  validates :third_party_insurance, numericality: { greater_than: 0, message: 'Seguro contra terceiros deve ser maior que 0'}
+  validates :third_part_insurance, presence: {message: 'Seguro contra terceiros não pode ficar em branco'}
+  validates :third_part_insurance, numericality: { greater_than: 0, message: 'Seguro contra terceiros deve ser maior que 0'}
 end

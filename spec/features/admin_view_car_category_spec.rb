@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin view all CarCategory' do
   scenario 'successfully' do
     carcategory = CarCategory.create!(name: 'Básico', daily_rate: '4.50', 
-      car_insurance: '1000', third_party_insurance: '950.50')
+      car_insurance: '1000', third_part_insurance: '950.50')
 
     visit root_path
     click_on 'Categorias de carros'
@@ -12,9 +12,9 @@ feature 'Admin view all CarCategory' do
   end
 
   scenario 'and view details' do
-    carcategory = CarCategory.create!(name: 'Básico', daily_rate: '4.50', 
+    carcategory = CarCategory.create!(name: 'A', daily_rate: '4.50', 
                                       car_insurance: '1000', 
-                                      third_party_insurance: '950.50')
+                                      third_part_insurance: '950.50')
 
     manufacturer = Manufacturer.create!(name: 'Fiat')
     
@@ -29,9 +29,9 @@ feature 'Admin view all CarCategory' do
     click_on carcategory.name
 
     expect(page).to have_css('h1', text: carcategory.name)
-    expect(page).to have_css('p', text: carcategory.daily_rate)
-    expect(page).to have_css('p', text: carcategory.car_insurance)
-    expect(page).to have_css('p', text: carcategory.third_party_insurance)
+    expect(page).to have_css('p', text: "R$ 4,50")
+    expect(page).to have_css('p', text: "R$ 1.000,00")
+    expect(page).to have_css('p', text: "R$ 950,50")
     expect(page).to have_link('Uno', href: car_model_path(uno))
     expect(page).to have_link('Mobi', href: car_model_path(mobi))
   end
@@ -45,7 +45,7 @@ feature 'Admin view all CarCategory' do
 
   scenario 'and return to home page' do
     carcategory = CarCategory.create!(name: 'Básico', daily_rate: '4.50', 
-      car_insurance: '1000', third_party_insurance: '950.50')
+      car_insurance: '1000', third_part_insurance: '950.50')
 
     visit root_path
     click_on 'Categorias de carros'
@@ -56,7 +56,7 @@ feature 'Admin view all CarCategory' do
 
   scenario 'and return to car category page' do
     carcategory = CarCategory.create!(name: 'Básico', daily_rate: '4.50', 
-      car_insurance: '1000', third_party_insurance: '950.50')
+      car_insurance: '1000', third_part_insurance: '950.50')
 
     visit root_path
     click_on 'Categorias de carros'
@@ -69,11 +69,11 @@ feature 'Admin view all CarCategory' do
   scenario 'and view filtered car model' do
     carcategory = CarCategory.create!(name: 'A', daily_rate: '4.50', 
                                       car_insurance: '1000', 
-                                      third_party_insurance: '950.50')
+                                      third_part_insurance: '950.50')
 
     carcategory_b = CarCategory.create!(name: 'B', daily_rate: '4.50', 
                                       car_insurance: '1000', 
-                                      third_party_insurance: '950.50')
+                                      third_part_insurance: '950.50')
 
     manufacturer = Manufacturer.create!(name: 'Fiat')
     

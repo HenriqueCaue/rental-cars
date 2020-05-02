@@ -12,7 +12,7 @@ describe CarCategory, type: :model do
 
     it 'must be uniq' do
       CarCategory.create!(name: 'Básico', daily_rate: '100', car_insurance: '1000', 
-                          third_party_insurance: '2000')
+                          third_part_insurance: '2000')
       carcategory = CarCategory.new(name: 'Básico')
 
       carcategory.valid?
@@ -33,7 +33,7 @@ describe CarCategory, type: :model do
 
     it 'must be greater than 0' do
       carcategory = CarCategory.create(name: 'Básico', daily_rate: -10, 
-                                  car_insurance: 1000, third_party_insurance: 2000)
+                                  car_insurance: 1000, third_part_insurance: 2000)
     
       carcategory.valid?
 
@@ -54,7 +54,7 @@ describe CarCategory, type: :model do
 
     it 'must be greater than 0' do
       carcategory = CarCategory.create(name: 'Básico', daily_rate: 100, 
-                                  car_insurance: -10, third_party_insurance: 2000)
+                                  car_insurance: -10, third_part_insurance: 2000)
     
       carcategory.valid?
 
@@ -69,17 +69,17 @@ describe CarCategory, type: :model do
 
       carcategory.valid?
 
-      expect(carcategory.errors[:third_party_insurance]).to include('Seguro contra terceiros não pode '\
+      expect(carcategory.errors[:third_part_insurance]).to include('Seguro contra terceiros não pode '\
                                                     'ficar em branco')
     end
 
     it 'must be greater than 0' do
       carcategory = CarCategory.create(name: 'Básico', daily_rate: 100, 
-                                  car_insurance: 1000, third_party_insurance: -10)
+                                  car_insurance: 1000, third_part_insurance: -10)
     
       carcategory.valid?
 
-      expect(carcategory.errors[:third_party_insurance]).to include('Seguro contra ' \
+      expect(carcategory.errors[:third_part_insurance]).to include('Seguro contra ' \
                                                         'terceiros deve ser maior que 0')
     end
   end

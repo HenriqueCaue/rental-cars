@@ -1,7 +1,7 @@
 <h1>Categoria <%= @carcategories.name %></h1>
-<p><%= @carcategories.daily_rate %></p>
-<p><%= @carcategories.car_insurance %></p>
-<p><%= @carcategories.third_party_insurance %></p>
+<p><%= number_to_currency(@carcategories.daily_rate) %></p>
+<p><%= number_to_currency(@carcategories.car_insurance) %></p>
+<p><%= number_to_currency(@carcategories.third_part_insurance) %></p>
 
 <h3>Modelos de carros</h3>
 <% @carcategories.car_models.each do |car_model| %>

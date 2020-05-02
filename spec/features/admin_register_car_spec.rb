@@ -5,7 +5,7 @@ feature 'Admin register car' do
     manufacturer = Manufacturer.create!(name: 'Fiat')
     
     category = CarCategory.create!(name: 'A', daily_rate: 100,
-                                        car_insurance: 100, third_party_insurance: 100)
+                                        car_insurance: 100, third_part_insurance: 100)
 
     car_model = CarModel.create!(name: 'Uno', year: 2020, manufacturer: manufacturer, 
                         motorization: '1.0', fuel_type: 'Flex', car_category: category)

@@ -6,7 +6,7 @@ feature 'Admin register rental' do
                       email: 'customer@gmail.com')
                     
     car_category = CarCategory.create!(name: 'A', daily_rate: 100, car_insurance: 100, 
-                                        third_party_insurance: 100)
+                                        third_part_insurance: 100)
 
     user = User.create!(email: 'customer@teste.com', password: '12345678')
 
