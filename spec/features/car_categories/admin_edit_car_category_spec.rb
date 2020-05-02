@@ -5,6 +5,9 @@ feature 'Admin edit car category' do
     CarCategory.create!(name: 'A', daily_rate: '4.50', 
       car_insurance: '1000', third_part_insurance: '950.50')
 
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
     click_on 'A'
@@ -25,6 +28,9 @@ feature 'Admin edit car category' do
   scenario 'and nothing can be blank' do
     CarCategory.create!(name: 'A', daily_rate: '4.50', 
       car_insurance: '1000', third_part_insurance: '950.50')
+
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Categorias de carros'
@@ -50,7 +56,9 @@ feature 'Admin edit car category' do
     CarCategory.create!(name: 'B', daily_rate: '4.50', 
       car_insurance: '1000', third_part_insurance: '950.50')
 
-    
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
     click_on 'A'
@@ -69,6 +77,9 @@ feature 'Admin edit car category' do
     CarCategory.create!(name: 'A', daily_rate: '4.50', 
       car_insurance: '1000', third_part_insurance: '950.50')
     
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Categorias de carros'
     click_on 'A'
@@ -83,5 +94,14 @@ feature 'Admin edit car category' do
     expect(page).to have_content('Taxa Diária deve ser maior que 0')
     expect(page).to have_content('Seguro do Carro deve ser maior que 0')
     expect(page).to have_content('Seguro Contra Terceiros deve ser maior que 0')
+  end
+
+  scenario 'cannot view unless logged in' do
+    CarCategory.create!(name: 'A', daily_rate: '4.50', 
+      car_insurance: '1000', third_part_insurance: '950.50')
+
+    visit edit_car_category_path(1)
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end

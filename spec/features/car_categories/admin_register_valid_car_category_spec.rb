@@ -4,6 +4,9 @@ feature 'admin register valid car category' do
   scenario 'name must be unique' do
     CarCategory.create!(name: 'A', daily_rate: '100', car_insurance: '1000', third_part_insurance: '2000')
     
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Registrar nova categoria'
@@ -19,6 +22,9 @@ feature 'admin register valid car category' do
   end
 
   scenario 'and nothing can be blank' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Registrar nova categoria'
@@ -36,6 +42,9 @@ feature 'admin register valid car category' do
   end
 
   scenario 'values must be greater than 0' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Registrar nova categoria'

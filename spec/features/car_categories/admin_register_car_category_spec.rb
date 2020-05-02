@@ -2,6 +2,9 @@ require 'rails_helper'
 
 feature 'Admin register car category' do
   scenario 'from index page' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
 
@@ -9,6 +12,9 @@ feature 'Admin register car category' do
   end
 
   scenario 'successfully' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Registrar nova categoria'
@@ -26,5 +32,11 @@ feature 'Admin register car category' do
     expect(page).to have_css('p', text: 'R$ 1.500,00')
 
     expect(page).to have_link('Voltar')
+  end
+
+  scenario 'cannot view unless logged in' do
+    visit new_car_category_path
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end

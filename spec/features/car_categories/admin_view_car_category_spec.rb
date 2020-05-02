@@ -5,6 +5,9 @@ feature 'Admin view all CarCategory' do
     carcategory = CarCategory.create!(name: 'Básico', daily_rate: '4.50', 
       car_insurance: '1000', third_part_insurance: '950.50')
 
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Categorias de carros'
 
@@ -23,7 +26,10 @@ feature 'Admin view all CarCategory' do
 
     mobi = CarModel.create!(name: 'Mobi', year: 2020, manufacturer: manufacturer, 
                     motorization: '1.0', fuel_type: 'Flex', car_category: carcategory)
-  
+      
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
     click_on carcategory.name
@@ -37,6 +43,9 @@ feature 'Admin view all CarCategory' do
   end
 
   scenario 'and no car category are created' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias de carros'
 
@@ -46,6 +55,9 @@ feature 'Admin view all CarCategory' do
   scenario 'and return to home page' do
     carcategory = CarCategory.create!(name: 'Básico', daily_rate: '4.50', 
       car_insurance: '1000', third_part_insurance: '950.50')
+
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Categorias de carros'
@@ -57,6 +69,9 @@ feature 'Admin view all CarCategory' do
   scenario 'and return to car category page' do
     carcategory = CarCategory.create!(name: 'Básico', daily_rate: '4.50', 
       car_insurance: '1000', third_part_insurance: '950.50')
+
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Categorias de carros'
@@ -83,6 +98,9 @@ feature 'Admin view all CarCategory' do
     argos = CarModel.create!(name: 'Argos', year: 2020, manufacturer: manufacturer, 
                     motorization: '1.0', fuel_type: 'Flex', car_category: carcategory_b)
   
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Categorias de carros'
     click_on carcategory.name
@@ -91,4 +109,19 @@ feature 'Admin view all CarCategory' do
     expect(page).not_to have_link('Argos', href: car_model_path(argos))
   end
   
+  scenario 'cannot view unless logged in' do
+    visit car_categories_path
+
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+  scenario 'cannot view unless logged in' do
+    CarCategory.create!(name: 'A', daily_rate: '4.50', 
+      car_insurance: '1000', 
+      third_part_insurance: '950.50')
+
+    visit manufacturer_path(1)
+
+    expect(current_path).to eq(new_user_session_path)
+  end
 end
