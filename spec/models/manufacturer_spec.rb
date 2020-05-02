@@ -3,6 +3,9 @@ require 'rails_helper'
 describe Manufacturer, type: :model do
   context 'validation' do
     it 'name cannot be blank' do
+      user = User.create!(email: 'customer@teste.com', password: '12345678')
+      login_as user, scope: :user
+
       manufacturer = Manufacturer.new
 
       manufacturer.valid?
@@ -11,6 +14,9 @@ describe Manufacturer, type: :model do
     end
 
     it 'name must be uniq' do
+      user = User.create!(email: 'customer@teste.com', password: '12345678')
+      login_as user, scope: :user
+      
       Manufacturer.create!(name: 'Honda')
       manufacturer = Manufacturer.new(name: 'Honda')
 
