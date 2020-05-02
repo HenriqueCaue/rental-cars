@@ -17,7 +17,7 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.create(rental_params)
-    redirect_to rentals_path
+    redirect_to @rental
   end
 
   private

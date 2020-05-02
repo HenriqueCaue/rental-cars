@@ -10,12 +10,12 @@ feature 'admin register valid customer' do
 
     fill_in 'Nome', with: 'João'
     fill_in 'CPF', with: '820.286.340-65'
-    fill_in 'Endereço de email', with: 'customer@gmail.com'
+    fill_in 'Email', with: 'customer@gmail.com'
     click_on 'Enviar'
 
-    expect(page).to have_content('Nome deve ser único')
-    expect(page).to have_content('CPF deve ser único')
-    expect(page).to have_content('Email deve ser único')
+    expect(page).to have_content('Nome já está em uso')
+    expect(page).to have_content('CPF já está em uso')
+    expect(page).to have_content('Email já está em uso')
   end
 
   scenario 'and nothing can be blank' do
@@ -25,7 +25,7 @@ feature 'admin register valid customer' do
 
     fill_in 'Nome', with: ''
     fill_in 'CPF', with: ''
-    fill_in 'Endereço de email', with: ''
+    fill_in 'Email', with: ''
     click_on 'Enviar'
 
     expect(page).to have_content('Nome não pode ficar em branco')

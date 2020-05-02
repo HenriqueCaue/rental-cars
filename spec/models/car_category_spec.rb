@@ -6,8 +6,7 @@ describe CarCategory, type: :model do
 
       carcategory.valid?
 
-      expect(carcategory.errors[:name]).to include('Nome não pode '\
-                                                    'ficar em branco')
+      expect(carcategory.errors[:name]).to include("não pode ficar em branco")
     end
 
     it 'must be uniq' do
@@ -17,7 +16,7 @@ describe CarCategory, type: :model do
 
       carcategory.valid?
 
-      expect(carcategory.errors[:name]).to include('Nome deve ser único')
+      expect(carcategory.errors[:name]).to include('já está em uso')
     end
   end
 
@@ -27,8 +26,7 @@ describe CarCategory, type: :model do
 
       carcategory.valid?
 
-      expect(carcategory.errors[:daily_rate]).to include('Taxa diária não pode '\
-                                                    'ficar em branco')
+      expect(carcategory.errors[:daily_rate]).to include('não pode ficar em branco')
     end
 
     it 'must be greater than 0' do
@@ -37,8 +35,7 @@ describe CarCategory, type: :model do
     
       carcategory.valid?
 
-      expect(carcategory.errors[:daily_rate]).to include('Taxa diária deve ' \
-                                                        'ser maior que 0')
+      expect(carcategory.errors[:daily_rate]).to include('deve ser maior que 0')
     end
   end
 
@@ -48,8 +45,7 @@ describe CarCategory, type: :model do
 
       carcategory.valid?
 
-      expect(carcategory.errors[:car_insurance]).to include('Seguro do carro não pode '\
-                                                    'ficar em branco')
+      expect(carcategory.errors[:car_insurance]).to include('não pode ficar em branco')
     end
 
     it 'must be greater than 0' do
@@ -58,8 +54,7 @@ describe CarCategory, type: :model do
     
       carcategory.valid?
 
-      expect(carcategory.errors[:car_insurance]).to include('Seguro do carro deve '\
-                                                        'ser maior que 0')
+      expect(carcategory.errors[:car_insurance]).to include('deve ser maior que 0')
     end
   end
 
@@ -69,7 +64,7 @@ describe CarCategory, type: :model do
 
       carcategory.valid?
 
-      expect(carcategory.errors[:third_part_insurance]).to include('Seguro contra terceiros não pode '\
+      expect(carcategory.errors[:third_part_insurance]).to include('não pode '\
                                                     'ficar em branco')
     end
 
@@ -79,8 +74,8 @@ describe CarCategory, type: :model do
     
       carcategory.valid?
 
-      expect(carcategory.errors[:third_part_insurance]).to include('Seguro contra ' \
-                                                        'terceiros deve ser maior que 0')
+      expect(carcategory.errors[:third_part_insurance]).to include('deve ser ' \
+                                                        'maior que 0')
     end
   end
 end

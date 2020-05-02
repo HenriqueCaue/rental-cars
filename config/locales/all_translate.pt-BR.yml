@@ -35,8 +35,8 @@ pt-BR:
       manufacturer:
         name: Nome
       rental:
-        start_date: Data de início
-        end_date: Data de término
+        start_date: Data de Início
+        end_date: Data de Término
         customer: Cliente
         car_category: Categoria
       subsidiary:

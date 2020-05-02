@@ -40,8 +40,8 @@ feature 'Admin view rentals' do
 
     expect(page).to have_content("Cliente: #{rental.customer.name}")
     expect(page).to have_content("Categoria: #{rental.car_category.name}")
-    expect(page).to have_content('Data de início: 29/04/2030')
-    expect(page).to have_content('Data de término: 30/04/2030')
+    expect(page).to have_content('Data de Início: 29/04/2030')
+    expect(page).to have_content('Data de Término: 30/04/2030')
   end
 
   scenario 'and no rentals are created' do

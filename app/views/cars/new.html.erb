@@ -3,11 +3,11 @@
 <%= form_with model: @car, local: true do |c| %>
   <%= c.label :car_model_id, 'Modelo do carro' %>
   <%= c.collection_select :car_model_id, @car_model, :id, :name%>
-  <%= c.label :license_plate, 'Placa' %>
+  <%= c.label :license_plate %>
   <%= c.text_field :license_plate %>
-  <%= c.label :color, 'Cor' %>
+  <%= c.label :color %>
   <%= c.text_field :color %>
-  <%= c.label :mileage, 'Quilometragem' %>
+  <%= c.label :mileage %>
   <%= c.number_field :mileage %>
   <%= c.label :subsidiary_id, 'Filial' %>
   <%= c.collection_select :subsidiary_id, @subsidiary, :id, :name%>

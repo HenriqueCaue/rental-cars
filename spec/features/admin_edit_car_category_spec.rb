@@ -38,9 +38,9 @@ feature 'Admin edit car category' do
     click_on 'Enviar'
 
     expect(page).to have_content('Nome não pode ficar em branco')
-    expect(page).to have_content('Taxa diária não pode ficar em branco')
-    expect(page).to have_content('Seguro do carro não pode ficar em branco')
-    expect(page).to have_content('Seguro contra terceiros não pode ficar em branco')
+    expect(page).to have_content('Taxa Diária não pode ficar em branco')
+    expect(page).to have_content('Seguro do Carro não pode ficar em branco')
+    expect(page).to have_content('Seguro Contra Terceiros não pode ficar em branco')
   end
 
   scenario 'and all must be unique' do
@@ -62,6 +62,26 @@ feature 'Admin edit car category' do
     fill_in 'Seguro Contra Terceiros', with: '950.50'
     click_on 'Enviar'
 
-    expect(page).to have_content('Nome deve ser único')
+    expect(page).to have_content('Nome já está em uso')
+  end
+
+  scenario 'and all must be greater than 0' do
+    CarCategory.create!(name: 'A', daily_rate: '4.50', 
+      car_insurance: '1000', third_part_insurance: '950.50')
+    
+    visit root_path
+    click_on 'Categorias de carros'
+    click_on 'A'
+    click_on 'Editar'
+
+    fill_in 'Nome', with: 'B'
+    fill_in 'Taxa Diária', with: '-4.70'
+    fill_in 'Seguro do Carro', with: '-2000'
+    fill_in 'Seguro Contra Terceiros', with: '0'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Taxa Diária deve ser maior que 0')
+    expect(page).to have_content('Seguro do Carro deve ser maior que 0')
+    expect(page).to have_content('Seguro Contra Terceiros deve ser maior que 0')
   end
 end

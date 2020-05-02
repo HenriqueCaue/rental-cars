@@ -1,13 +1,13 @@
 <h1>Nova locação</h1>
 
 <%= form_with model: @rental, local: true do |ren| %>
-  <%= ren.label :start_date, 'Data de início' %>
+  <%= ren.label :start_date %>
   <%= ren.date_field :start_date %>
-  <%= ren.label :end_date, 'Data de término' %>
+  <%= ren.label :end_date %>
   <%= ren.date_field :end_date %>
   <%= ren.label :customer_id, 'Cliente' %>
   <%= ren.collection_select :customer_id, @customer, :id, :name%>
-  <%= ren.label :car_category_id, 'Categoria de Categoria' %>
+  <%= ren.label :car_category_id, 'Categoria' %>
   <%= ren.collection_select :car_category_id, @car_category, :id, :name%>
   <%= ren.submit 'Enviar' %>
 <% end %>

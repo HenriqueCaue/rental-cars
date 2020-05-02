@@ -15,7 +15,7 @@ feature 'User register customer' do
 
     expect(page).to have_content('Nome')
     expect(page).to have_content('CPF')
-    expect(page).to have_content('Endereço de email')
+    expect(page).to have_content('Email')
   end
 
   scenario 'successfully' do
@@ -25,7 +25,7 @@ feature 'User register customer' do
 
     fill_in 'Nome', with: 'João'
     fill_in 'CPF', with: '820.286.340-65'
-    fill_in 'Endereço de email', with: 'customer@gmail.com'
+    fill_in 'Email', with: 'customer@gmail.com'
     click_on 'Enviar'
 
     expect(current_path).to eq customer_path(Customer.last.id)

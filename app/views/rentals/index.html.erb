@@ -10,7 +10,7 @@
   <h3><%= link_to ren.customer.name, rental_path(id: ren.id) %></h3>
   <!--<p><%= link_to 'Ver detalhes', ren, id: "details-#{ren.id}" %></p>-->
 <% end %>
-
+<!--
 <% @rentals.each do |rental| %>
   <dl>
     <dt>Data de início:</dt>
@@ -22,7 +22,7 @@
     <dt>Categoria:</dt>
     <dd><%= rental.car_category.name %></dd>
   </dl>
-<% end %>
+<% end %>-->
 
 <%= link_to 'Voltar', root_path %>
 

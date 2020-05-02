@@ -57,8 +57,8 @@ feature 'Admin edit subsidiary' do
     fill_in 'Endereço', with: 'Rua Estrada Avenida'
     click_on 'Enviar'
 
-    expect(page).to have_content('Nome deve ser único')
-    expect(page).to have_content('CNPJ deve ser único')
-    expect(page).to have_content('Endereço deve ser único')
+    expect(page).to have_content('Nome já está em uso')
+    expect(page).to have_content('CNPJ já está em uso')
+    expect(page).to have_content('Endereço já está em uso')
   end
 end

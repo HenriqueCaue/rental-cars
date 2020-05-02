@@ -7,7 +7,7 @@ describe Customer, type: :model do
 
       customer.valid?
 
-      expect(customer.errors[:name]).to include('Nome não pode ficar em branco')
+      expect(customer.errors[:name]).to include('não pode ficar em branco')
     end
 
     it 'must be unique' do
@@ -17,7 +17,7 @@ describe Customer, type: :model do
 
       customer.valid?
 
-      expect(customer.errors[:name]).to include('Nome deve ser único')
+      expect(customer.errors[:name]).to include('já está em uso')
     end
   end
 
@@ -27,7 +27,7 @@ describe Customer, type: :model do
 
       customer.valid?
 
-      expect(customer.errors[:document]).to include('CPF não pode ficar em branco')
+      expect(customer.errors[:document]).to include('não pode ficar em branco')
     end
 
     it 'must be unique' do
@@ -37,7 +37,7 @@ describe Customer, type: :model do
 
       customer.valid?
 
-      expect(customer.errors[:document]).to include('CPF deve ser único')
+      expect(customer.errors[:document]).to include('já está em uso')
     end
 
     it 'must be valid format' do
@@ -45,7 +45,7 @@ describe Customer, type: :model do
 
       customer.valid?
 
-      expect(customer.errors[:document]).to include('CPF não é válido')
+      expect(customer.errors[:document]).to include('não é válido')
     end
     
     #it 'must be valid length' do
@@ -61,7 +61,7 @@ describe Customer, type: :model do
 
       customer.valid?
 
-      expect(customer.errors[:email]).to include('Email não pode ficar em branco')
+      expect(customer.errors[:email]).to include('não pode ficar em branco')
     end
 
     it 'must be unique' do
@@ -71,7 +71,7 @@ describe Customer, type: :model do
 
       customer.valid?
 
-      expect(customer.errors[:email]).to include('Email deve ser único')
+      expect(customer.errors[:email]).to include('já está em uso')
     end
   end
 end

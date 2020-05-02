@@ -14,9 +14,9 @@ feature 'Admin register car category' do
     click_on 'Registrar nova categoria'
 
     fill_in 'Nome', with: 'A'
-    fill_in 'Taxa diária', with: '10'
-    fill_in 'Seguro do carro', with: '2000'
-    fill_in 'Seguro contra terceiros', with: '1500'
+    fill_in 'Taxa Diária', with: '10'
+    fill_in 'Seguro do Carro', with: '2000'
+    fill_in 'Seguro Contra Terceiros', with: '1500'
     click_on 'Enviar'
 
     expect(current_path).to eq car_category_path(CarCategory.last.id)
