@@ -24,8 +24,8 @@
         <%= link_to 'Entrar', new_user_session_path %>
       <% end %>
     </nav>
-
-    <%= flash[:notice]%>
+    <%= flash[:notice] %>
+    <p class="notice"><%= notice %></p>
     <%= yield %>
   </body>
 </html>

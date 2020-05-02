@@ -2,6 +2,9 @@ require 'rails_helper'
 
 feature 'User register customer' do
   scenario 'from index page' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Clientes'
 
@@ -9,6 +12,9 @@ feature 'User register customer' do
   end
 
   scenario 'and view form' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Clientes'
     click_on 'Registrar novo cliente'
@@ -19,6 +25,9 @@ feature 'User register customer' do
   end
 
   scenario 'successfully' do
+    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Clientes'
     click_on 'Registrar novo cliente'
@@ -34,5 +43,11 @@ feature 'User register customer' do
     expect(page).to have_css('p', text: 'customer@gmail.com')
 
     expect(page).to have_link('Voltar')
+  end
+
+  scenario 'cannot view unless logged in' do
+    visit new_customer_path
+
+    expect(current_path).to eq(new_user_session_path)
   end
 end

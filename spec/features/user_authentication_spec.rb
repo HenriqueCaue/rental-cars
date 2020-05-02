@@ -6,7 +6,6 @@ feature 'User authentication' do
       user = User.create!(email: 'customer@teste.com', password: '12345678')
 
       visit root_path
-      click_on 'Entrar'
 
       fill_in 'Email', with: user.email
       fill_in 'Senha', with: user.password
@@ -22,10 +21,7 @@ feature 'User authentication' do
 
     xscenario 'and must fill in all fields' do
       visit root_path
-      click_on 'Entrar'
 
-      fill_in 'Email', with: user.email
-      fill_in 'Senha', with: user.password
       within 'form' do
         click_on 'Entrar'
       end
@@ -39,9 +35,8 @@ feature 'User authentication' do
   context 'log out' do
     scenario 'successfully' do
       user = User.create!(email: 'customer@teste.com', password: '12345678')
-
+      
       visit root_path
-      click_on 'Entrar'
 
       fill_in 'Email', with: user.email
       fill_in 'Senha', with: user.password
@@ -50,9 +45,9 @@ feature 'User authentication' do
       end
       click_on 'Sair'
 
-      expect(page).to have_content('Saiu com sucesso.')
-      expect(page).not_to have_link('Sair')
+      expect(page).to have_content('Saiu com sucesso')
       expect(page).to have_link('Entrar')
+      expect(page).not_to have_link('Sair')
       expect(current_path).to eq(root_path)
     end
   end
