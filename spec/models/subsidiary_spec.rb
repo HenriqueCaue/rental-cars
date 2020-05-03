@@ -45,6 +45,22 @@ describe Subsidiary, type: :model do
 
       expect(subsidiary.errors[:cnpj]).to include('não é válido')
     end
+
+    it 'must be valid formatation' do
+      subsidiary = Subsidiary.new(cnpj: '22880353000166')
+
+      subsidiary.valid?
+
+      expect(subsidiary.errors[:cnpj]).to include('Digite os pontos, a barra e o traço')
+    end
+
+    it 'must be valid length' do
+      subsidiary = Subsidiary.new(cnpj: '22880353000166')
+
+      subsidiary.valid?
+
+      expect(subsidiary.errors[:cnpj]).to include('não possui o tamanho esperado (18 caracteres)')
+    end
   end
 
   context '#address' do

@@ -4,8 +4,8 @@ class Customer < ApplicationRecord
   validates :name, :email, :document, presence: true
 
   validate :cpf_must_be_valid
-  #validates :document, length: {is: 14, message: 'Digite os pontos e o traço'}
-  #validates :document, format: {with: /\d{3}\.\d{3}\.\d{3}\-\d{2}/}
+  validates :document, length: {is: 14}
+  validates :document, format: {with: /\d{3}\.\d{3}\.\d{3}\-\d{2}/, message: "Digite os pontos e o traço"}
   
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 

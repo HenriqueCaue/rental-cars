@@ -48,11 +48,17 @@ describe Customer, type: :model do
       expect(customer.errors[:document]).to include('não é válido')
     end
     
-    #it 'must be valid length' do
-    #  customer = Customer.new(document: '820.286.340-00')
-    #  customer.valid?
-    #  expect(customer.errors[:document]).to include('Digite os pontos e o traço')
-    #end
+    it 'must be valid formatation' do
+      customer = Customer.new(document: '82028634065')
+      customer.valid?
+      expect(customer.errors[:document]).to include('Digite os pontos e o traço')
+    end
+
+    it 'must be valid length' do
+      customer = Customer.new(document: '82028634065')
+      customer.valid?
+      expect(customer.errors[:document]).to include('não possui o tamanho esperado (14 caracteres)')
+    end
   end
 
   context '#email' do
