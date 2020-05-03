@@ -73,5 +73,13 @@ describe Customer, type: :model do
 
       expect(customer.errors[:email]).to include('já está em uso')
     end
+
+    it 'must be valid' do
+      customer = Customer.new(email: 'cus,tomer@gmail.com')
+
+      customer.valid?
+
+      expect(customer.errors[:email]).to include('não é válido')
+    end
   end
 end
