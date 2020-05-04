@@ -19,15 +19,14 @@ feature 'User authentication' do
       expect(current_path).to eq(root_path)
     end
 
-    xscenario 'and must fill in all fields' do
+    scenario 'and must fill in all fields' do
       visit root_path
 
       within 'form' do
         click_on 'Entrar'
       end
 
-      expect(page).to have_content('Email não pode ficar em branco')
-      expect(page).to have_content('Senha não pode ficar em branco')
+      expect(page).to have_content('Email ou senha inválida.')
       expect(page).to have_link('Entrar')
       expect(page).not_to have_link('Sair')
     end
