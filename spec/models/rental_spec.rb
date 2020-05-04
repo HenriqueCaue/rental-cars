@@ -13,6 +13,6 @@ RSpec.describe Rental, type: :model do
     
     rental.save
 
-    expect(rental.code).not_to be_blank
+    expect(rental.code).to_not be_blank
   end
 end

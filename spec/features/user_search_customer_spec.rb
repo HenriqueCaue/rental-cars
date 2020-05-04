@@ -16,12 +16,12 @@ feature 'User search customer' do
 
     visit root_path
     click_on 'Clientes'
-    fill_in 'Busca', with: 'Fulano Sicrano'
+    fill_in 'Busca', with: customer.name
     click_on 'Buscar'
 
     expect(page).to have_content(customer.name)
-    expect(page).to have_content(customer.email)
     expect(page).to have_content(customer.document)
+    expect(page).to have_content(customer.email)
     expect(page).not_to have_content(another_customer.name)
     expect(page).not_to have_content(another_customer.email)
     expect(page).not_to have_content(another_customer.document)

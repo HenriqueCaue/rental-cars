@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
   end
 
   def search
-    @customers = Customer.where(name: params[:q])
+    @customers = @customer = Customer.where(name: params[:q])
     render :index
   end
 
