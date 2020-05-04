@@ -6,6 +6,12 @@
   Nenhuma locação cadastrada
 <% end %>
 
+<%= form_with url: search_rentals_path, method: :get do |f| %>
+  <%= f.label :q, 'Código' %>
+  <%= f.text_field :q %>
+  <%= f.submit 'Buscar'%>
+<% end %>
+
 <% @rentals.each do |ren| %>
   <h3><%= link_to ren.customer.name, rental_path(id: ren.id) %></h3>
   <!--<p><%= link_to 'Ver detalhes', ren, id: "details-#{ren.id}" %></p>-->
