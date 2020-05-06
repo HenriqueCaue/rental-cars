@@ -9,6 +9,14 @@ class Customer < ApplicationRecord
   
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
+
+  scope :search, ->(query) { where('name LIKE ?', "%#{query}%")
+                                    .or(where(document: query)) }
+
+  #def self.search(query)
+  #  where('name LIKE ?', "%#{query}%")
+  #end
+
   private
   def cpf_must_be_valid
     return if CPF.valid?(document, strict: true)

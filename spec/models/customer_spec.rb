@@ -88,4 +88,59 @@ describe Customer, type: :model do
       expect(customer.errors[:email]).to include('não é válido')
     end
   end
+
+  context 'search' do
+    it 'by exact name' do
+
+      customer = Customer.create!(name: 'Fulano Sicrano', document: '100.954.020-39', 
+                                  email: 'test@test.com')
+      another_customer = Customer.create!(name: 'João da Silva', 
+                                          document: '581.280.655-13', 
+                                          email: 'test@email.com')
+
+      result = Customer.search('Fulano Sicrano')
+
+      expect(result).to include(customer)
+      expect(result).not_to include(another_customer)
+
+    end
+    it 'by partial name' do
+
+      customer = Customer.create!(name: 'Fulano Sicrano', document: '100.954.020-39', 
+                                  email: 'test@test.com')
+      another_customer = Customer.create!(name: 'João da Silva', 
+                                          document: '581.280.655-13', 
+                                          email: 'test@email.com')
+
+      result = Customer.search('fulano')
+
+      expect(result).to include(customer)
+      expect(result).not_to include(another_customer)
+    end
+
+    it 'finds nothing' do
+      customer = Customer.create!(name: 'Fulano Sicrano', document: '100.954.020-39', 
+                                  email: 'test@test.com')
+      another_customer = Customer.create!(name: 'João da Silva', 
+                                          document: '581.280.655-13', 
+                                          email: 'test@email.com')
+
+      result = Customer.search('test')
+
+      expect(result).to be_blank
+    end
+
+    it 'by cpf' do
+      customer = Customer.create!(name: 'Fulano Sicrano', document: '100.954.020-39', 
+                                  email: 'test@test.com')
+      another_customer = Customer.create!(name: 'João da Silva', 
+                                          document: '581.280.655-13', 
+                                          email: 'test@email.com')
+
+      result = Customer.search('100.954.020-39')
+
+      expect(result).to include(customer)
+      expect(result).not_to include(another_customer)
+    end
+  end
 end
