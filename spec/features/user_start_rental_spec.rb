@@ -34,7 +34,7 @@ feature 'User start rental' do
     expect(page).to have_content(car.license_plate)
     expect(page).to have_content(customer.name)
     expect(page).to have_content(customer.email)
-    expect(page).to have_content('Em progesso')
-    expect(page).to have_content(user.name)
+    expect(page).to have_content('Em progresso')
+    expect(page).to have_content(user.email)
   end
 end

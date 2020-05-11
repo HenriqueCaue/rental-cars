@@ -1,15 +1,22 @@
 <dl>
   <dt>Código:</dt>
-  <dd><%= @rentals.code %></dd>
+  <dd><%= @rental.code %></dd>
   <dt>Cliente:</dt>
-  <dd><%= @rentals.customer.name %></dd>
+  <dd><%= @rental.customer.name %></dd>
   <dt>Categoria:</dt>
-  <dd><%= @rentals.car_category.name %></dd>
+  <dd><%= @rental.car_category.name %></dd>
   <dt>Data de Início:</dt>
-  <dd><%= l @rentals.start_date %></dd>
+  <dd><%= l @rental.start_date %></dd>
   <dt>Data de Término:</dt>
-  <dd><%= l @rentals.end_date %></dd>
+  <dd><%= l @rental.end_date %></dd>
 </dl>
 
+<% if @rental.car_rental.present? %>
+  <p>Data de início da locação: <%= l @rental.car_rental.created_at, format: :long %></p>
+  <p>Carro: <%= @rental.car_rental.car.license_plate %></p>
+  <p>Cliente: <%= @rental.customer.email %></p>
+  <p>Em progresso</p>
+  <p>Locação iniciada por: <%= @rental.car_rental.user.email %></p>
+<% end %>
 <%= link_to 'Voltar', rentals_path %>
 
