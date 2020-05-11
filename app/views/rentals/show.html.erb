@@ -15,8 +15,11 @@
   <p>Data de início da locação: <%= l @rental.car_rental.created_at, format: :long %></p>
   <p>Carro: <%= @rental.car_rental.car.license_plate %></p>
   <p>Cliente: <%= @rental.customer.email %></p>
-  <p>Em progresso</p>
+  <% if @rental.ongoing?%>
+    <p>Status: <%= Rental.human_attribute_name("status.#{@rental.status}") %></p>
+  <% end %>
   <p>Locação iniciada por: <%= @rental.car_rental.user.email %></p>
 <% end %>
+
 <%= link_to 'Voltar', rentals_path %>
 

@@ -34,6 +34,9 @@ pt-BR:
         email: Email
       manufacturer:
         name: Nome
+      rental/status:
+        scheduled: Agendada
+        ongoing: Em progresso
       rental:
         start_date: Data de Início
         end_date: Data de Término
