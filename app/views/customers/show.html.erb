@@ -2,4 +2,6 @@
 <p><%= @customer.document %></p>
 <p><%= @customer.email %></p>
 
+<%= link_to 'Iniciar', new_rental_car_rental_path(@customer) %>
+
 <%= link_to 'Voltar', customers_path %>
