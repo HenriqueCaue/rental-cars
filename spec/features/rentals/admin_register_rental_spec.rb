@@ -10,6 +10,12 @@ feature 'Admin register rental' do
 
     user = User.create!(email: 'customer@teste.com', password: '12345678')
 
+    mail = double('RentalsMailer')
+    allow(RentalsMailer).to receive(:scheduled).and_return(mail)
+    allow(mail).to receive(:deliver_now)
+    #spy = ('RentalsMailer')
+    #stub_const('RentalsMailer', spy)
+
     login_as user, scope: :user
     visit root_path
     click_on 'Locações'
@@ -18,8 +24,10 @@ feature 'Admin register rental' do
     fill_in 'Data de Término', with: '29/04/2030'
     select customer.name, from: 'Cliente'
     select car_category.name, from: 'Categoria'
+    #expect { click_on 'Enviar' }.to change { ActionMailer::Base.deliveries.count }
     click_on 'Enviar'
     
+    expect(RentalsMailer).to have_received(:scheduled)
     expect(page).to have_content('Data de Início: 27/04/2030')
     expect(page).to have_content('Data de Término: 29/04/2030')
     expect(page).to have_content("Cliente: #{customer.name}")

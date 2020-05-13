@@ -15,6 +15,9 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.create(rental_params)
+
+    RentalsMailer.scheduled(@rental).deliver_now
+    
     redirect_to @rental
   end
 
