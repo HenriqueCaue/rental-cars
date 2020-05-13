@@ -15,4 +15,12 @@ Rails.application.routes.draw do
     resources :car_rentals, only: [:new, :create]
   end
   resources :cars, only: [:index, :show, :new, :create]
+
+  #get 'api/v1/cars', to: 'api#cars'
+
+  namespace :api do
+    namespace :v1 do
+      resources :cars, only: %i[index]
+    end
+  end
 end
