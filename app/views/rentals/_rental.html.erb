@@ -1,0 +1,14 @@
+<dl>
+  <dt>Código:</dt>
+  <dd><%= rental.code %></dd>
+  <dt>Cliente:</dt>
+  <dd><%= rental.customer.name %></dd>
+  <dt>Categoria:</dt>
+  <dd><%= rental.car_category.name %></dd>
+  <dt>Data de Início:</dt>
+  <dd><%= l rental.start_date %></dd>
+  <dt>Data de Término:</dt>
+  <dd><%= l rental.end_date %></dd>
+  <dt>Status:</dt>
+  <dd><%= Rental.human_attribute_name("status.#{rental.status}") %></dd>
+</dl>

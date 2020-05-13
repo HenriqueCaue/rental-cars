@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+  has_many :rentals
+
   validates :name, :document, :email, uniqueness: true
 
   validates :name, :email, :document, presence: true

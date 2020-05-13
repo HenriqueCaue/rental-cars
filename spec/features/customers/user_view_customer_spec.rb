@@ -105,4 +105,8 @@ feature 'user view customer' do
 
     expect(current_path).to eq(new_user_session_path)
   end
+
+  xscenario 'without rentals' do
+    expect(page).to_not have_linh('Iniciar')
+  end
 end

@@ -1,7 +1,36 @@
-<h1><%= @customer.name %></h1>
-<p><%= @customer.document %></p>
-<p><%= @customer.email %></p>
+<dl>
+  <dt>Nome:</dt>
+  <dd><h1><%= @customer.name %></h1></dd>
+  <dt>CPF:</dt>
+  <dd><p><%= @customer.document %></p></dd>
+  <dt>Email:</dt>
+  <dd><p><%= @customer.email %></p></dd>
+</dl>
+Locações
 
-<%= link_to 'Iniciar', new_rental_car_rental_path(@customer) %>
+<table>
+  <tr>
+    <th><%= Rental.human_attribute_name(:code) %></th>
+    <th><%= Rental.human_attribute_name(:start_date) %></th>
+    <th><%= Rental.human_attribute_name(:end_date) %></th>
+    <th><%= Rental.human_attribute_name(:car_category) %></th>
+    <th><%= Rental.human_attribute_name(:status) %></th>
+    <th>Ações</th>
+  </tr>
+  <% @customer.rentals.each do |rental| %>
+  <tr>
+    <td><%= rental.code %></td>
+    <td><%= l rental.start_date %></td>
+    <td><%= l rental.end_date %></td>
+    <td><%= rental.car_category.name %></td>
+    <td><%= Rental.human_attribute_name("status.#{rental.status}") %></td>
+    <td>
+      <% if rental.scheduled? %>
+        <%= link_to 'Iniciar', new_rental_car_rental_path(rental) %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Voltar', customers_path %>
