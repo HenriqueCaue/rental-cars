@@ -1,4 +1,5 @@
 class RentalsController < ApplicationController
+  before_action :authorize_admin!
   def index
     @rentals = Rental.all
   end
@@ -36,5 +37,10 @@ class RentalsController < ApplicationController
   def rental_params
     params.require(:rental).permit(:start_date, :end_date, 
                                     :customer_id, :car_category_id)
+  end
+
+  def authorize_admin!
+    return if current_user.admin?
+    redirect_to root_path, notice: 'Ação não autorizada'
   end
 end

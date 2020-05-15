@@ -8,7 +8,9 @@ feature 'Admin register rental' do
     car_category = CarCategory.create!(name: 'A', daily_rate: 100, car_insurance: 100, 
                                         third_part_insurance: 100)
 
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+
+    user = create(:user, :admin)
 
     mail = double('RentalsMailer')
     allow(RentalsMailer).to receive(:scheduled).and_return(mail)

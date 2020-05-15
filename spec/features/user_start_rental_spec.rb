@@ -11,7 +11,8 @@ feature 'User start rental' do
     rental = create(:rental, customer: customer, 
                     car_category: car_model.car_category)
 
-    user = create(:user, email: 'test@test.com.br')
+    #user = create(:user, email: 'test@test.com.br')
+    user = create(:user, :admin)
 
     login_as user, scope: :user
     visit search_rentals_path(q: rental.code)
@@ -37,8 +38,9 @@ feature 'User start rental' do
     rental = create(:rental, customer: customer, 
                     car_category: car_model.car_category)
 
-    user = create(:user, email: 'test@test.com.br')
-    
+    #user = create(:user, email: 'test@test.com.br')
+    user = create(:user, :admin)
+
     login_as user, scope: :user
     visit customer_path(customer)
     click_on 'Iniciar'

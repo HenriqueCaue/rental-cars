@@ -14,7 +14,8 @@ feature 'User search rental' do
     another_rental = Rental.create!(start_date:1.day.from_now, end_date: 2.days.from_now, 
             customer: customer, car_category: car_category)
 
-    user = User.create!(email: 'user@teste.com', password: '12345678')
+    #user = User.create!(email: 'user@teste.com', password: '12345678')
+    user = create(:user, :admin)
     login_as user, scope: :user
 
     visit root_path
@@ -27,7 +28,8 @@ feature 'User search rental' do
   end
 
   scenario 'cannot be blank' do
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+    user = create(:user, :admin)
     login_as user, scope: :user
 
     visit root_path
@@ -39,7 +41,8 @@ feature 'User search rental' do
   end
 
   scenario 'and code cannot be found' do
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+    user = create(:user, :admin)
     login_as user, scope: :user
 
     visit root_path

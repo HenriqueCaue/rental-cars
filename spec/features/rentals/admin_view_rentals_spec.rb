@@ -11,13 +11,14 @@ feature 'Admin view rentals' do
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
 
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+    user = create(:user, :admin)
 
     login_as user, scope: :user
     visit root_path
     click_on 'Locações'
 
-    expect(page).to have_css('h3', text: rental.customer.name)
+    expect(page).to have_content(rental.customer.name)
   end
 
   scenario 'and view details' do
@@ -30,7 +31,8 @@ feature 'Admin view rentals' do
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
   
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+    user = create(:user, :admin)
 
     login_as user, scope: :user
     
@@ -45,7 +47,8 @@ feature 'Admin view rentals' do
   end
 
   scenario 'and no rentals are created' do
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+    user = create(:user, :admin)
 
     login_as user, scope: :user
     visit root_path
@@ -64,7 +67,8 @@ feature 'Admin view rentals' do
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
 
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+    user = create(:user, :admin)
 
     login_as user, scope: :user
     
@@ -85,7 +89,8 @@ feature 'Admin view rentals' do
     rental = Rental.create!(start_date: '29/04/2030', end_date: '30/04/2030', 
                             customer: customer, car_category: car_category)
 
-    user = User.create!(email: 'customer@teste.com', password: '12345678')
+    #user = User.create!(email: 'customer@teste.com', password: '12345678')
+    user = create(:user, :admin)
 
     login_as user, scope: :user
     
