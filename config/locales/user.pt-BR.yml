@@ -7,7 +7,14 @@ pt-BR:
       user:
         email: Email
         password: Senha
+        password_confirmation: Confirme a senha
   devise: 
     sessions:
       new:
         log_in: Entrar
+    shared:
+      links:
+        sign_in: Cadastro
+    registrations:
+      new:
+        password_confirmation: Confirme a senha

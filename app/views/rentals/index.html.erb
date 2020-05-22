@@ -14,6 +14,7 @@
 
 <% @rentals.each do |ren| %>
   <h3><%= link_to ren.customer.name, rental_path(id: ren.id) %></h3>
+  <%= l ren.start_date %>
   <!--<p><%= link_to 'Ver detalhes', ren, id: "details-#{ren.id}" %></p>-->
 <% end %>
 
